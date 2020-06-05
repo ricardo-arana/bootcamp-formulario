@@ -27,6 +27,7 @@ export class TemplateComponent implements OnInit {
       return;
     } else {
       console.log('El formulario es valido');
+      /// ... en
     }
     
   }

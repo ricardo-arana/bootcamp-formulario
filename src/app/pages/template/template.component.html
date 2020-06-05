@@ -69,7 +69,7 @@
                   {{cliente}}
               </option>
             </select>
-            <div *ngIf="cliente.errors?.pattern">
+            <div *ngIf="cliente.errors?.required">
                 <small>Seleccione un cliente</small> 
             </div>
           </div>
@@ -80,7 +80,7 @@
           id="exampleCheck1">
           <label class="form-check-label" for="exampleCheck1">Esta de vacaciones?</label>
         </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
+        <button  type="submit" class="btn btn-primary">Enviar</button>
       </form>
 </div>
 <div class="pt-3">
