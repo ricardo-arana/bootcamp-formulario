@@ -10,9 +10,11 @@ export class TemplateComponent implements OnInit {
   persona = {
     nombre: '',
     apellido: '',
+    correo: '',
     cliente: '',
     vacaciones: false
   };
+  clientes: string[] = ['Claro', 'Entel', 'BCP', 'BBVA', 'interbank'];
   constructor() { }
 
   ngOnInit(): void {
