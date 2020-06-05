@@ -18,4 +18,15 @@ export class TemplateComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  guardar(formulario) {
+    console.log(formulario);
+    if(formulario.form.invalid) {
+      console.log('El formulario es invalido');
+      return;
+    } else {
+      console.log('El formulario es valido');
+    }
+    
+  }
+
 }

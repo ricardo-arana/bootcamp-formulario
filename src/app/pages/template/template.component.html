@@ -1,26 +1,46 @@
 <div class="mt-2">
-    <form>
+    <form (ngSubmit)="guardar(forma)" #forma="ngForm" >
         <div class="form-group">
             <label for="nombre">Nombre</label>
             <input type="email" class="form-control"
             name="nombre"
             [(ngModel)]="persona.nombre"
+            required
+            #nombre="ngModel"
+            autocomplete="false"
+            minlength="3"
             >
           </div>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <div *ngIf="nombre.errors?.required">
+            <small>Este campo es requerido</small> 
+        </div>
+        <div *ngIf="nombre.errors?.minlength">
+            <small>Este campo requiere por lo menos {{nombre.errors.minlength.requiredLength}}</small> 
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
+          <label for="apellido">Apellido</label>
+          <input type="email" class="form-control"
+          [(ngModel)]="persona.apellido"
+          name="apellido"
+          required
+          >
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Cliente</label>
+          <input type="text" class="form-control"
+            [(ngModel)]="persona.cliente"
+            name="cliente"
+            required
+          >
         </div>
         <div class="form-group form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          <input type="checkbox" class="form-check-input"
+          [(ngModel)]="persona.vacaciones"
+          name="vacaciones"
+          id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Esta de vacaciones?</label>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Enviar</button>
       </form>
 </div>
 <div class="pt-3">
