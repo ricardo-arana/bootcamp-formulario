@@ -21,6 +21,15 @@
             </div>
         </div>
         <div class="form-group">
+            <label for="usuario">usuario</label>
+            <input
+            id="usuario"
+            type="text"
+            class="form-control"
+            formControlName="usuario"
+            />
+        </div>
+        <div class="form-group">
             <label >Password</label>
             <input
             type="password"
@@ -64,7 +73,7 @@
                 <button type="button" class="btn btn-info" (click)="agregarIntereses()">Agregar</button>
                 <br><label>intereses</label>
                 <input
-                *ngFor="let interes of forma.controls.intereses.controls; let i = index"
+                *ngFor="let interes of forma.get('intereses')['controls']; let i = index"
                 type="text"
                 class="form-control"
                 [formControlName]="i"
@@ -73,6 +82,9 @@
           </div>
         <button  type="submit" class="btn btn-primary">Enviar</button>
     </form>
+</div>
+<div class="p-2">
+    status del usuario: {{ forma.controls.usuario.status }}
 </div>
 <div class="p-2">
     {{ forma.value | json }}

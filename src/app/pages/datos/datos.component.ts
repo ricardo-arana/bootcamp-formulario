@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-datos',
@@ -15,6 +16,7 @@ export class DatosComponent implements OnInit {
         nombre: new FormControl('', [Validators.required, Validators.minLength(4), this.noRicardo] ),
         apellido: new FormControl('', Validators.required)
       }),
+      usuario: new FormControl('', [Validators.required], this.existeUsuario),
       pass: new FormControl('', [Validators.required]),
       pass2: new FormControl('', Validators.required),
       correo: new FormControl('', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]),
@@ -55,5 +57,20 @@ export class DatosComponent implements OnInit {
       return { noigual: true };
     }
   }
+
+  existeUsuario(control: FormControl): Promise<any> | Observable<any> {
+    const promesa = new Promise(
+      (resolve, reject) => {
+        setTimeout(() => {
+          if(control.value === 'ricky') {
+            resolve({existe: true});
+          } else {
+            resolve(null);
+          }
+        }, 3000);
+      }
+    );
+    return promesa;
+  } 
 
 }
